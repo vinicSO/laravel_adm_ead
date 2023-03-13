@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\Eloquet\UserRepository;
-use App\Repositories\Eloquet\UserRepositoryInterface;
+use App\Repositories\Eloquent\UserRepository;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

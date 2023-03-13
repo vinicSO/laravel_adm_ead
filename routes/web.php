@@ -2,11 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
-    AdminController
+    AdminController,
+    UserController
 };
 
 
 Route::prefix('admin')->group( function () {
+    
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
     Route::get('/', [AdminController::class, 'index'])->name('admin.home');
 });
 

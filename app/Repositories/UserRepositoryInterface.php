@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquet;
+namespace App\Repositories;
 
 interface UserRepositoryInterface
 {

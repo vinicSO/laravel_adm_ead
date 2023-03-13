@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Repositories\Eloquet;
+namespace App\Repositories\Eloquent;
 
 use App\Models\User as Model;
+use App\Repositories\UserRepositoryInterface;
 
 class UserRepository implements UserRepositoryInterface
 {
