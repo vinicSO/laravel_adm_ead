@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Lesson extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
+        'url',
         'description',
-        'image',
-        'available'
+        'video'
     ];
 
-    public function modules () {
-        return $this->hasMany(Module::class);
+    public function module () {
+        return $this->belongsTo(Module::class);
     }
+
 }
