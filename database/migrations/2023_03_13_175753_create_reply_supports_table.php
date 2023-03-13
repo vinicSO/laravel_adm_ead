@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('reply_support', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('module_id')->index();
-            $table->string('name')->unique();
-            $table->string('url')->unique();
-            $table->string('video')->unique();
-            $table->text('description')->nullable();
+            $table->uuid('support_id')->index();
+            $table->uuid('user_id')->nullable();
+            $table->uuid('admin_id')->nullable();
+            $table->text('description');
             $table->timestamps();
 
-            $table->foreign('module_id')->references('id')->on('modules');
+            $table->foreign('support_id')->references('id')->on('supports');
         });
     }
 
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('reply_support');
     }
 };
