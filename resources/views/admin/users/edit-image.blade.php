@@ -12,6 +12,9 @@
                 <i class="fas fa-list mr-3"></i> Formulário de Usuário
             </p>
             <div class="leading-loose">
+
+                @include('admin.includes.alerts')
+
                 <form class="p-10 bg-white rounded shadow-xl" action="{{ route('users.uploadFile', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf

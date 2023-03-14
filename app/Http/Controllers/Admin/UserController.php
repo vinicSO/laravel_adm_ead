@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreImageRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Services\UploadFileService;
@@ -64,7 +65,7 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function uploadFile ( Request $request, UploadFileService $uploadFileService ) 
+    public function uploadFile ( StoreImageRequest $request, UploadFileService $uploadFileService ) 
     {
         $path = $uploadFileService->store($request->image, 'users');
 
