@@ -15,6 +15,9 @@
         <p class="text-xl pb-3 flex items-center">
             <i class="fas fa-list mr-3"></i> Registros de Usuários
         </p>
+
+        @include('admin.includes.form-search', ['routerName' => 'users.index'])
+
         <div class="bg-white overflow-auto">
             <table class="min-w-full leading-normal">
                 <thead>

@@ -15,7 +15,7 @@ class UserRepository implements UserRepositoryInterface
         $this->model = $model;
     }
 
-    public function getAll ( string $filter = '' ): array
+    public function getAll ( string | null $filter = '' ): array
     {
         $users = $this->model
             ->where( function ($query) use ($filter) {
