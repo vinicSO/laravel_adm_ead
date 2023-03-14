@@ -9,14 +9,9 @@ return [
             'icon' => 'fas fa-tachometer-alt'
         ],
         [
-            'name' => 'Listagem',
-            'url' => '/listagem',
+            'name' => 'Usuários',
+            'url' => '/admin/users',
             'icon' => 'fas fa-align-left'
-        ],
-        [
-            'name' => 'Formulários',
-            'url' => '/admin/tabelas',
-            'icon' => 'fas fa-table'
         ]
     ]
 

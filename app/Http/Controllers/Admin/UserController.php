@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -30,8 +31,10 @@ class UserController extends Controller
         return view('admin.users.create');
     }
 
-    public function store ( Request $request )
+    public function store ( StoreUserRequest $request )
     {
-        dd($request->all());
+        $user = $this->service->create($request->validated());
+
+        return redirect()->route('users.index');
     }
 }

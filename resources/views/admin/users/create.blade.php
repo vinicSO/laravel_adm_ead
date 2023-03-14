@@ -12,7 +12,7 @@
                 <i class="fas fa-list mr-3"></i> Formulário de Novo Usuário
             </p>
             <div class="leading-loose">
-                <form class="p-10 bg-white rounded shadow-xl" action="{{ route('users.store') }}">
+                <form class="p-10 bg-white rounded shadow-xl" action="{{ route('users.store') }}" method="POST">
                     @include('admin.users._partials.form')
                 </form>
             </div>
