@@ -12,6 +12,11 @@ return [
             'name' => 'Usuários',
             'url' => '/admin/users',
             'icon' => 'fas fa-align-left'
+        ],
+        [
+            'name' => 'Admins',
+            'url' => '/admin/admins',
+            'icon' => 'fas fa-user-shield'
         ]
     ]
 

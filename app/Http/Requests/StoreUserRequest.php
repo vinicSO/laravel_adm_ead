@@ -33,6 +33,7 @@ class StoreUserRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
+                'unique:admins',
                 'unique:users'
             ],
             'password' => [

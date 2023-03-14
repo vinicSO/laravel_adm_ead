@@ -8,6 +8,17 @@ use App\Http\Controllers\Admin\{
 
 
 Route::prefix('admin')->group( function () {
+
+    /**
+     * Routes Admins
+     */
+    Route::resource('/admins', AdminController::class);
+    Route::put('/admins/{id}/uploadFile', [AdminController::class, 'uploadFile'])->name('admins.uploadFile');
+    Route::get('/admins/{id}/edit-image', [AdminController::class, 'editImage'])->name('admins.editImage');
+
+    /**
+     * Routes Users
+     */
     Route::put('/users/{id}/uploadFile', [UserController::class, 'uploadFile'])->name('users.uploadFile');
     Route::get('/users/{id}/edit-image', [UserController::class, 'editImage'])->name('users.editImage');
     Route::put('/users/{id}/update', [UserController::class, 'update'])->name('users.update');

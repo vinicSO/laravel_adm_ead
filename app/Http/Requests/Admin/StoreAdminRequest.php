@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateUserRequest extends FormRequest
+class StoreAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,13 +31,13 @@ class UpdateUserRequest extends FormRequest
                 'string'
             ],
             'email' => [
+                'required',
                 'email',
-                'nullable',
-                "unique:users,email,{$this->id},id",
-                "unique:admins,email,{$this->id},id"
+                'unique:admins',
+                'unique:users'
             ],
             'password' => [
-                'nullable',
+                'required',
                 'min:6',
                 'max:15'
             ]
