@@ -8,7 +8,8 @@ use App\Http\Controllers\Admin\{
 
 
 Route::prefix('admin')->group( function () {
-
+    Route::put('/users/{id}/uploadFile', [UserController::class, 'uploadFile'])->name('users.uploadFile');
+    Route::get('/users/{id}/edit-image', [UserController::class, 'editImage'])->name('users.editImage');
     Route::put('/users/{id}/update', [UserController::class, 'update'])->name('users.update');
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');

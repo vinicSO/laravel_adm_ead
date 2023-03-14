@@ -62,4 +62,17 @@ class UserController extends Controller
 
         return redirect()->route('users.index');
     }
+
+    public function uploadFile ( Request $request ) 
+    {
+        dd($request->image);
+    }
+
+    public function editImage ( Request $request )
+    {
+        if (!$user = $this->service->findById($request->id)) return redirect()->back();
+
+        return view('admin.users.edit-image', compact('user'));
+    }
+
 }
