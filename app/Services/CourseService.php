@@ -14,7 +14,7 @@ class CourseService
         $this->repository = $repository;
     }
 
-    public function getAll ( $filter = '' ): array
+    public function getAll ( string | null $filter = '' ): array
     {
         $courses = $this->repository->getAll($filter);
 
@@ -26,7 +26,7 @@ class CourseService
         return $this->repository->findById($id);
     }
 
-    public function create ( $data ): object
+    public function create ( array $data ): object
     {
         return $this->repository->create($data);
     }
