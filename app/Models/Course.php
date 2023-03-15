@@ -16,6 +16,8 @@ class Course extends Model
         'available',
     ];
 
+    public $incrementing = false;
+
     public function modules () {
         return $this->hasMany(Module::class);
     }

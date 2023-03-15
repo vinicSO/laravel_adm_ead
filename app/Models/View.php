@@ -14,5 +14,7 @@ class View extends Model
         'lesson_id',
         'qty'
     ];
+
+    public $incrementing = false;
     
 }

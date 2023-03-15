@@ -17,7 +17,9 @@ class SupportController extends Controller
 
     public function index ( Request $request )
     {
-        $supports = $this->service->getAll($request->status ?? '');
+        $supports = $this->service->getAll($request->status ?? 'P');
+
+        // dd($supports);
 
         return view('admin.supports.index', compact('supports'));
     }

@@ -24,6 +24,8 @@ class Module extends Model
         'id' => 'string'
     ];
 
+    public $incrementing = false;
+
     public function course () {
         return $this->belongsTo(Course::class);
     }

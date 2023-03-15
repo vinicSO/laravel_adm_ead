@@ -15,5 +15,7 @@ class ReplySupport extends Model
         'support_id',
         'description'
     ];
+
+    public $incrementing = false;
     
 }

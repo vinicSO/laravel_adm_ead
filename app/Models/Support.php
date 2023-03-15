@@ -16,6 +16,8 @@ class Support extends Model
         'lesson_id'
     ];
 
+    public $incrementing = false;
+
     public function user ()
     {
         return $this->belongsTo(User::class);

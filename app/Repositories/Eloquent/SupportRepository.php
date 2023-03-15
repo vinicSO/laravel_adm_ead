@@ -17,17 +17,12 @@ class SupportRepository implements SupportRepositoryInterface
 
     public function getByStatus ( string $status = '' ): array
     {
-        $courses = $this->model
-            ->where( function ($query) use ($status) {
-                if ( $status )
-                {
-                    $query->where('status', $status);
-                }
-            })
-            ->with('users')
+        $supports = $this->model
+            ->where('status', $status)
+            ->with(['user', 'lesson'])
             ->get();
 
-        return $courses->toArray();
+        return $supports->toArray();
     }
 
     public function findById ( string $id ): object | null

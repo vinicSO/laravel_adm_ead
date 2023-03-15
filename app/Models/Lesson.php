@@ -26,6 +26,8 @@ class Lesson extends Model
         'id' => 'string'
     ];
 
+    public $incrementing = false;
+
     public function module () {
         return $this->belongsTo(Module::class);
     }
