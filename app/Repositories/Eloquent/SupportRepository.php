@@ -24,6 +24,7 @@ class SupportRepository implements SupportRepositoryInterface
                     $query->where('status', $status);
                 }
             })
+            ->with('users')
             ->get();
 
         return $courses->toArray();
