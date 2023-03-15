@@ -68,10 +68,10 @@
                                         <span class="relative">Editar</span>
                                     </span>
                                 </a>
-                                <a href="{{ route('courses.editImage', ['id' => $course->id] )}}">
+                                <a href="{{ route('courses.show', ['course' => $course->id] )}}">
                                     <span class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
                                         <span aria-hidden class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
-                                        <span class="relative">Imagem</span>
+                                        <span class="relative">Detalhes</span>
                                     </span>
                                 </a>
                             </td>

@@ -35,7 +35,10 @@ class CourseController extends Controller
 
     public function store ( StoreCourseRequest $request, UploadFileService $uploadFileService )
     {
-        $data = $request->only('name');
+        $data = $request->only([
+            'name',
+            'description'
+        ]);
         $data['available'] = isset($request->available);
 
         if ( $request->image )
@@ -57,7 +60,10 @@ class CourseController extends Controller
 
     public function update ( UpdateCourseRequest $request, UploadFileService $uploadFileService )
     {
-        $data = $request->only('name');
+        $data = $request->only([
+            'name',
+            'description'
+        ]);
         $data['available'] = isset($request->available);
 
         if ( $request->image )
@@ -75,5 +81,19 @@ class CourseController extends Controller
         $this->service->update($request->course, $data);
 
         return redirect()->route('courses.index');
+    }
+
+    public function show ( Request $request )
+    {
+        if ( !$course = $this->service->findById($request->course) ) return redirect()->back();
+
+        return view('admin.courses.show', compact('course'));
+    }
+
+    public function destroy ( Request $request )
+    {
+        $this->service->delete($request->course);
+
+        return redirect()->route('admin.courses.index');
     }
 }
