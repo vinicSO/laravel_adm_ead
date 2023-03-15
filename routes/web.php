@@ -6,10 +6,19 @@ use App\Http\Controllers\Admin\{
     CourseController,
     UserController,
     ModuleController,
+    LessonController
 };
 
 
 Route::prefix('admin')->group( function () {
+
+    /**
+     * Routes Lessons
+     */
+    Route::resource(
+        name: '/modules/{module_id}/lessons',
+        controller: LessonController::class
+    );
 
     /**
      * Routes Modules
