@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
+use App\Http\Requests\UpdateCourseRequest;
 use App\Services\CourseService;
 use App\Services\UploadFileService;
 use Illuminate\Http\Request;
@@ -54,7 +55,7 @@ class CourseController extends Controller
         return view('admin.courses.edit', compact('course'));
     }
 
-    public function update ( Request $request, UploadFileService $uploadFileService )
+    public function update ( UpdateCourseRequest $request, UploadFileService $uploadFileService )
     {
         $data = $request->only('name');
         $data['available'] = isset($request->available);
