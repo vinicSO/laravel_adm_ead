@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateModule;
 use App\Repositories\{
     CourseRepositoryInterface,
     ModuleRepositoryInterface
@@ -41,7 +42,7 @@ class ModuleController extends Controller
         return view('admin.courses.modules.create', compact('course'));
     }
 
-    public function store ( Request $request )
+    public function store ( StoreUpdateModule $request )
     {
         $courseId = $request->course_id;
 
@@ -66,7 +67,7 @@ class ModuleController extends Controller
         return view('admin.courses.modules.edit', compact('course', 'module'));
     }
 
-    public function update ( Request $request )
+    public function update ( StoreUpdateModule $request )
     {
         $courseId = $request->course_id;
         $moduleId = $request->module;
