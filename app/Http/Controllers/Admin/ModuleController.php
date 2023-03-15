@@ -78,4 +78,27 @@ class ModuleController extends Controller
 
         return redirect()->route('modules.index', ['course_id' => $courseId]);
     }
+
+    public function show ( Request $request )
+    {
+        $courseId = $request->course_id;
+        $moduleId = $request->module;
+
+        if ( !$course = $this->courseRepository->findById($courseId) ) return redirect()->back();
+        
+        if ( !$module = $this->repository->findById($moduleId) ) return redirect()->back();
+
+        return view('admin.courses.modules.show', compact('course', 'module'));
+    }
+
+    public function destroy ( Request $request )
+    {
+        $courseId = $request->course_id;
+        $moduleId = $request->module;
+
+        if ( !$this->courseRepository->findById($courseId) || !$this->repository->findById($moduleId) || !$this->repository->delete($moduleId) ) return redirect()->back();
+
+        return redirect()->route('modules.index', ['course_id' => $courseId]);
+    }
+
 }

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', "Módulos | {$course->name}")
+@section('title', mb_strtoupper($course->name) . " | Módulos do Curso")
 
 @section('content')
 

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Atualizar Módulo | {$module->name}')
+@section('title',  mb_strtoupper($course->name) . " | Atualizar Módulo " . mb_strtoupper($module->name))
 
 @section('content')
 

@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 
-@section('title', "Detalhes do Curso {$course->name}")
+@section('title', mb_strtoupper($course->name) . " | Detalhes")
 
 @section('content')
 <h1 class="w-full text-3xl text-black pb-6">
-    Detalhes do Curso {{ $course->name }}
+    Detalhes do Curso <strong>{{ mb_strtoupper($course->name) }}</strong>
 </h1>
 
 <div class="flex flex-wrap">
