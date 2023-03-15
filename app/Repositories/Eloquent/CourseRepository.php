@@ -21,8 +21,7 @@ class CourseRepository implements CourseRepositoryInterface
             ->where( function ($query) use ($filter) {
                 if ( $filter )
                 {
-                    $query->where('email', $filter);
-                    $query->orWhere('name', 'LIKE', "%{$filter}%");
+                    $query->where('name', 'LIKE', "%{$filter}%");
                 }
             })
             ->get();

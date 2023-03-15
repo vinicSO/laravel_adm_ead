@@ -5,7 +5,7 @@ namespace App\Repositories;
 interface UserRepositoryInterface
 {
     
-    public function getAll ( string $filter = '' ): array;
+    public function getAll ( string | null $filter = '' ): array;
     public function findById ( string $id ): object | null;
     public function create ( array $data ): object;
     public function update ( string $id, array $data ): object | null;

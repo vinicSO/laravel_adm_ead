@@ -15,16 +15,16 @@ class ModuleRepository implements ModuleRepositoryInterface
         $this->model = $model;
     }
 
-    public function getAll ( string | null $filter = '' ): array
+    public function getAllByCourseId ( string $courseId, string | null $filter = '' ): array
     {
         $modules = $this->model
             ->where( function ($query) use ($filter) {
                 if ( $filter )
                 {
-                    $query->where('email', $filter);
-                    $query->orWhere('name', 'LIKE', "%{$filter}%");
+                    $query->where('name', 'LIKE', "%{$filter}%");
                 }
             })
+            ->where('course_id', $courseId)
             ->get();
 
         return $modules->toArray();
@@ -35,8 +35,10 @@ class ModuleRepository implements ModuleRepositoryInterface
         return $this->model->find($id);
     }
 
-    public function create ( array $data ): object
+    public function createByCourse ( string $courseId, array $data ): object
     {
+        $data['course_id'] = $courseId;
+        
         return $this->model->create($data);
     }
 
