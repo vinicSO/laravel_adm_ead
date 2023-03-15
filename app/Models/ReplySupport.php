@@ -16,6 +16,13 @@ class ReplySupport extends Model
         'description'
     ];
 
+    protected $table = 'reply_support';
+
     public $incrementing = false;
-    
+
+    public function user () 
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

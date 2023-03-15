@@ -18,4 +18,9 @@ class SupportService
     {
         return convertItemsOfArrayToObject($this->repository->getByStatus($status));
     }
+
+    public function findById ( string $id )
+    {
+        return $this->repository->findById($id);
+    }
 }

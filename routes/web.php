@@ -16,7 +16,8 @@ Route::prefix('admin')->group( function () {
     /**
      * Routes Supports
      */
-    Route::get('/supports', [SupportController::class, 'index']);
+    Route::get('/supports', [SupportController::class, 'index'])->name('supports.index');
+    Route::get('/supports/{id}', [SupportController::class, 'show'])->name('supports.show');
 
     /**
      * Routes Lessons
