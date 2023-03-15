@@ -16,7 +16,7 @@
             <i class="fas fa-list mr-3"></i> Registros de Módulos
         </p>
 
-        {{-- @include('admin.includes.form-search', ['routerName' => 'modules.index']) --}}
+        @include('admin.includes.form-search', ['routerName' => 'modules.index', 'params' => $course->id])
 
         <div class="bg-white overflow-auto">
             <table class="min-w-full leading-normal">

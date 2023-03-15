@@ -28,7 +28,7 @@ class ModuleController extends Controller
 
         if ( !$course = $this->courseRepository->findById($courseId) ) return redirect()->back();
 
-        $modules = convertItemsOfArrayToObject($this->repository->getAllByCourseId($courseId));
+        $modules = convertItemsOfArrayToObject($this->repository->getAllByCourseId(courseId: $courseId, filter: $request->filter ?? ''));
 
         return view('admin.courses.modules.index', compact('modules', 'course'));
     }

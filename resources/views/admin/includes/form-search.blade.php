@@ -1,4 +1,4 @@
-<form action="{{ route($routerName) }}" method="GET">
+<form action="{{ route($routerName, $params ?? '') }}" method="GET">
     <div class="flex justify-end">
         <div class="mb-3 xl:w-96">
             <div class="relative mb-4 flex w-full flex-wrap items-stretch">
