@@ -4,14 +4,23 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     AdminController,
     CourseController,
-    UserController
+    UserController,
+    ModuleController,
 };
 
 
 Route::prefix('admin')->group( function () {
 
     /**
-     * Router Courses
+     * Routes Modules
+     */
+    Route::resource(
+        name: '/courses/{course_id}/modules',
+        controller: ModuleController::class
+    );
+
+    /**
+     * Routes Courses
      */
     Route::resource('/courses', CourseController::class);
     Route::put('/courses/{id}/uploadFile', [CourseController::class, 'uploadFile'])->name('courses.uploadFile');

@@ -2,10 +2,10 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Models\Course as Model;
-use App\Repositories\CourseRepositoryInterface;
+use App\Models\Module as Model;
+use App\Repositories\ModuleRepositoryInterface;
 
-class CourseRepository implements CourseRepositoryInterface
+class ModuleRepository implements ModuleRepositoryInterface
 {
 
     private $model;
@@ -17,7 +17,7 @@ class CourseRepository implements CourseRepositoryInterface
 
     public function getAll ( string | null $filter = '' ): array
     {
-        $courses = $this->model
+        $modules = $this->model
             ->where( function ($query) use ($filter) {
                 if ( $filter )
                 {
@@ -27,7 +27,7 @@ class CourseRepository implements CourseRepositoryInterface
             })
             ->get();
 
-        return $courses->toArray();
+        return $modules->toArray();
     }
 
     public function findById ( string $id ): object | null
@@ -42,22 +42,22 @@ class CourseRepository implements CourseRepositoryInterface
 
     public function update ( string $id, array $data ): object | null
     {
-        $course = $this->findById($id);
+        $module = $this->findById($id);
         
-        if ( !$course ) return null;
+        if ( !$module ) return null;
 
-        $course->update($data);
+        $module->update($data);
 
-        return $course;
+        return $module;
     }
 
     public function delete ( string $id ): bool
     {
-        $course = $this->findById($id);
+        $module = $this->findById($id);
 
-        if ( !$course ) return null;
+        if ( !$module ) return null;
 
-        return $course->delete();
+        return $module->delete();
     }
 
     
