@@ -46,4 +46,33 @@ class CourseController extends Controller
 
         return redirect()->route('courses.index');
     }
+
+    public function edit ( Request $request )
+    {
+        if ( !$course = $this->service->findById($request->course) ) return back();
+
+        return view('admin.courses.edit', compact('course'));
+    }
+
+    public function update ( Request $request, UploadFileService $uploadFileService )
+    {
+        $data = $request->only('name');
+        $data['available'] = isset($request->available);
+
+        if ( $request->image )
+        {
+            $course = $this->service->findById($request->course);
+
+            if ( $course && $course->image )
+            {
+                $uploadFileService->remove($course->image);
+            }
+
+            $data['image'] = $uploadFileService->store($request->image, 'courses');
+        }
+
+        $this->service->update($request->course, $data);
+
+        return redirect()->route('courses.index');
+    }
 }

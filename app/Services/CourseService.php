@@ -31,7 +31,7 @@ class CourseService
         return $this->repository->create($data);
     }
 
-    public function update ( $id, $data ): object | null
+    public function update ( string $id, array $data ): object | null
     {
         return $this->repository->update($id, $data);
     }

@@ -18,7 +18,7 @@ class UploadFileService
         return $file->storeAs($path, $customName);
     }
 
-    public function remove ( string $filePath, string $customName ): bool
+    public function remove ( string $filePath ): bool
     {
         if (Storage::exists($filePath)) return Storage::delete($filePath);
 

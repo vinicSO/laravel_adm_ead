@@ -13,10 +13,14 @@ class Course extends Model
         'name',
         'description',
         'image',
-        'available'
+        'available',
     ];
 
     public function modules () {
         return $this->hasMany(Module::class);
     }
+
+    protected $casts = [
+        'id' => 'string'
+    ];
 }
