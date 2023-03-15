@@ -52,4 +52,29 @@ class ModuleController extends Controller
         return redirect()->route('modules.index', ['course_id' => $courseId]);
 
     }
+
+    public function edit ( Request $request )
+    {
+        $courseId = $request->course_id;
+
+        if ( !$course = $this->courseRepository->findById($courseId) ) return redirect()->back();
+
+        $moduleId = $request->module;
+
+        if ( !$module = $this->repository->findById($moduleId) ) return redirect()->back();
+
+        return view('admin.courses.modules.edit', compact('course', 'module'));
+    }
+
+    public function update ( Request $request )
+    {
+        $courseId = $request->course_id;
+        $moduleId = $request->module;
+
+        if ( !$this->courseRepository->findById($courseId) || !$this->repository->findById($moduleId) ) return redirect()->back();
+
+        $this->repository->update($moduleId, $request->only('name'));
+
+        return redirect()->route('modules.index', ['course_id' => $courseId]);
+    }
 }
