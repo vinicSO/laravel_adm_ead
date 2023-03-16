@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     AdminController,
     CourseController,
+    DashboardController,
     UserController,
     ModuleController,
     LessonController,
@@ -66,7 +67,7 @@ Route::prefix('admin')->middleware(['auth'])->group( function () {
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
-    Route::get('/', [AdminController::class, 'index'])->name('admin.home');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.home');
 });
 
 Route::get('/', function () {
