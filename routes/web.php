@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\{
 };
 
 
-Route::prefix('admin')->group( function () {
+Route::prefix('admin')->middleware(['auth'])->group( function () {
     
     /**
      * Routes Reply Support
@@ -72,3 +72,5 @@ Route::prefix('admin')->group( function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+require __DIR__.'/auth.php';
