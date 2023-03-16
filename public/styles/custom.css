@@ -27,3 +27,13 @@
 .scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
     border-radius: 0.25rem;
 }
+/* 
+.replies {
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+}
+
+.replies > div:last-child {
+    scroll-snap-align: start;
+} */

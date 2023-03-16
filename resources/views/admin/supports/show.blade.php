@@ -30,7 +30,7 @@
                     </span>
                 </div>
             </div>
-            <div class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+            <div class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch replies">
 
                 @foreach ($support->replies as $key => $reply)
                     <div class="chat-message">
@@ -99,7 +99,7 @@
             </div>
             <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
             <div class="relative flex">
-                {{-- <form action="{{ route('replies.store', $support->id) }}" method="post" class="w-full">
+                <form action="{{ route('replies.store', $support->id) }}" method="post" class="w-full">
                     @csrf
                     <input type="hidden" name="support_id" value="{{ $support->id }}">
                     <input type="text" name="description" placeholder="Escreva a sua resposta" class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-2 bg-gray-200 rounded-md py-3">
@@ -111,7 +111,7 @@
                             </svg>
                         </button>
                     </div>
-                </form> --}}
+                </form>
             </div>
             </div>
         </div>

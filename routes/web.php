@@ -7,11 +7,17 @@ use App\Http\Controllers\Admin\{
     UserController,
     ModuleController,
     LessonController,
-    SupportController
+    SupportController,
+    ReplySupportController
 };
 
 
 Route::prefix('admin')->group( function () {
+    
+    /**
+     * Routes Reply Support
+     */
+    Route::post('/supports/{id}/replies', [ReplySupportController::class, 'store'])->name('replies.store');
 
     /**
      * Routes Supports
