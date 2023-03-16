@@ -22,6 +22,9 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('support_id')->references('id')->on('supports');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('admin_id')->references('id')->on('admins');
+
         });
     }
 

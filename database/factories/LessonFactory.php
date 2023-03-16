@@ -21,7 +21,7 @@ class LessonFactory extends Factory
 
         return [
             'id' => Str::uuid(),
-            'module_id' => '64d35cfc-5d96-4dc9-a4cb-7e5d918fe631',
+            'module_id' => '0e6c3a54-edbe-41a6-9b4b-c0b5582f64c8',
             'name' => $name,
             'url' => Str::slug($name),
             'video' => $this->faker->url(),

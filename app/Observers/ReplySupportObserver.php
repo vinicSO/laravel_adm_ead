@@ -15,7 +15,7 @@ class ReplySupportObserver
      */
     public function creating(ReplySupport $replySupport)
     {
-        $replySupport->admin_id = '7e83ff46-48b6-4ae7-a275-79ce7d67ecf3'; // Temporário
+        $replySupport->admin_id = '2373b7f3-54a4-41cf-9400-4b502f0d633f'; // Temporário
         $replySupport->id = Str::uuid();
     }
 
