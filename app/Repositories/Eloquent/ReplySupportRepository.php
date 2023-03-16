@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Events\SupportRepliedEvent;
 use App\Models\ReplySupport as Model;
 use App\Repositories\ReplySupportRepositoryInterface;
 
@@ -17,7 +18,11 @@ class ReplySupportRepository implements ReplySupportRepositoryInterface
 
     public function store ( array $data ): object
     {
-        return $this->model->create($data);
+        $replySupport = $this->model->create($data);
+
+        event(new SupportRepliedEvent($replySupport));
+
+        return $replySupport;
     }
     
 }
