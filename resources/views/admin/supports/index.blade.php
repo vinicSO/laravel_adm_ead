@@ -13,7 +13,26 @@
             <i class="fas fa-list mr-3"></i> Registros de Administradores
         </p>
 
-        @include('admin.includes.form-search', ['routerName' => 'admins.index'])
+        <form action="" method="GET">
+            <div class="flex justify-end">
+                <div class="mb-3">
+                    <div class="relative mb-4 flex w-full flex-wrap items-stretch">
+                        <select name="status">
+                            @foreach ($statusOptions as $status)
+                               
+                                <option  
+                                    @if (request('status') == $status->name)
+                                        selected
+                                    @endif
+                                    value="{{ $status->name }}">{{ $status->value }}</option>
+                            @endforeach
+                        </select>
+
+                        <button type="submit">Filtrar</button>
+                    </div>
+                </div>
+            </div>      
+        </form>
 
         <div class="bg-white overflow-auto">
             <table class="min-w-full leading-normal">
@@ -39,7 +58,7 @@
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 w-10 h-10">
-                                        @if ($support->user['image'])
+                                        @if ( isset($support->user['image']) )
                                             <img class="w-full h-full rounded-full"
                                                 src="{{ url("storage/{$support->user['image']}") }}"
                                                 alt="{{ $support->user['name']}}" />
@@ -48,13 +67,13 @@
                                     </div>
                                     <div class="ml-3">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $support->user['name'] }}
+                                            {{ $support->user['name'] ?? ''}}
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">{{ $support->lesson['name'] }}</p>
+                                <p class="text-gray-900 whitespace-no-wrap">{{ $support->lesson['name'] ?? '-' }}</p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <a href="{{ route('supports.show', ['id' => $support->id] )}}">

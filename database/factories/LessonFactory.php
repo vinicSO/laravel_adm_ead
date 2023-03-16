@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Module;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,7 +22,7 @@ class LessonFactory extends Factory
 
         return [
             'id' => Str::uuid(),
-            'module_id' => '0e6c3a54-edbe-41a6-9b4b-c0b5582f64c8',
+            'module_id' => Module::all()->random(),
             'name' => $name,
             'url' => Str::slug($name),
             'video' => $this->faker->url(),
