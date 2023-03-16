@@ -58,7 +58,7 @@
                         @endif
                     </div>
                 @endforeach
-                @foreach ($support->replies as $reply)
+                {{-- @foreach ($support->replies as $reply)
                     @php
                         $whenRepliesdIsAuthor = $reply->user->id == $support->user->id;
                         $classeChatMessage = $whenRepliesdIsAuthor ? '' : 'justify-end';
@@ -77,7 +77,7 @@
                             <img src="{{ $image }}" class="w-6 h-6 rounded-full {{ $orderImage }}">
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
 
             </div>
             <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
