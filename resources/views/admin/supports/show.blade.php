@@ -32,10 +32,14 @@
             </div>
             <div class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
 
-                @foreach ($support->replies as $reply)
+                @foreach ($support->replies as $key => $reply)
                     <div class="chat-message">
                         @php
                             $user = $reply->user ?? $reply->admin;
+                            $length = $support->replies->count();
+                            $next = null;
+
+                            if ($key+1 < $length) $next = $support->replies[$key+1]->user ?? $support->replies[$key+1]->admin;
                         @endphp
                         @if ($user->id == $support->user->id)
                             <div class="flex items-end">
@@ -44,16 +48,29 @@
                                         {{ $reply->description }}
                                     </span></div>
                                 </div>
-                                <img src="{{ $user->image ? url("storage/{$user->image}") : url('images/user.png') }}" class="w-6 h-6 rounded-full order-1">
+
+                                @if ( ($next && $user->id != $next->id) || !$next )
+                                    <img src="{{ $user->image ? url("storage/{$user->image}") : url('images/user.png') }}" alt="My profile" class="w-6 h-6 rounded-full order-1">
+                                @else
+                                    <span class="w-6 h-6 order-1"></span>
+                                @endif
+                                
                             </div>
                         @else
                             <div class="flex items-end justify-end">
                                 <div class="flex flex-col space-y-2 max-w-xs mx-2 order-1 items-end">
-                                <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
-                                    {{ $reply->description }}
-                                </span></div>
+                                    <div>
+                                        <span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
+                                            {{ $reply->description }}
+                                        </span>
+                                    </div>
                                 </div>
-                                <img src="{{ $user->image ? url("storage/{$user->image}") : url('images/user.png') }}" alt="My profile" class="w-6 h-6 rounded-full order-2">
+
+                                @if ( ($next && $user->id != $next->id) || !$next )
+                                    <img src="{{ $user->image ? url("storage/{$user->image}") : url('images/user.png') }}" class="w-6 h-6 rounded-full order-2">
+                                @else
+                                    <span class="w-6 h-6 order-2"></span>
+                                @endif
                             </div>
                         @endif
                     </div>
