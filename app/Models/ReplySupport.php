@@ -25,4 +25,14 @@ class ReplySupport extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function admin ()
+    {
+        return $this->belongsTo(Admin::class);
+    }
+
+    public function support ()
+    {
+        return $this->belongsTo(Support::class);
+    }
+
 }
