@@ -14,9 +14,9 @@ class SupportService
         $this->repository = $repository;
     }
 
-    public function getAll ( string $status = 'P' )
+    public function getAll ( string $status = 'P', int $page = 1)
     {
-        return convertItemsOfArrayToObject($this->repository->getByStatus($status));
+        return $this->repository->getByStatus($status, $page);
     }
 
     public function findById ( string $id )

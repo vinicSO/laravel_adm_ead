@@ -53,7 +53,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($supports as $support)
+                    @forelse ($supports->items() as $support)
                         <tr>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex items-center">
@@ -93,6 +93,27 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    
+    {{-- {{ $supports->links }} --}}
+    <div aria-label="Page navigation py-12">
+
+        <ul class="inline-flex py-5">
+            <li>
+                <a href="?page={{ $supports->currentPage() - 1 }}&status={{ request('status') ?? 'P' }}" class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white {{ $supports->currentPage() <= 1 ? 'disableLink' : ''}}">
+                    Voltar
+                </a>
+            </li>
+            <li>
+                <a href="" class="py-2 px-3 text-blue-600 bg-blue-50 border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">{{ $supports->currentPage() }}</a>
+            </li>
+            <li>
+                <a href="?page={{ $supports->currentPage() + 1 }}&status={{ request('status') ?? 'P' }}" class="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white {{ $supports->currentPage() >= $supports->lastPage() ? 'disableLink' : ''}}">
+                    Próxima
+                </a>
+            </li>
+        </ul>
+
     </div>
 
 @endsection

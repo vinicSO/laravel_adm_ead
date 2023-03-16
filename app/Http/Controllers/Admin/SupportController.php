@@ -18,7 +18,7 @@ class SupportController extends Controller
 
     public function index ( Request $request )
     {
-        $supports = $this->service->getAll($request->status ?? 'P');
+        $supports = $this->service->getAll($request->status ?? 'P', (int) $request->page ?? 1);
 
         $statusOptions = SupportEnum::cases();
 
